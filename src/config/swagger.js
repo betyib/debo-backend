@@ -17,7 +17,9 @@ const options = {
 
     servers: [
       {
-        url: "http://localhost:5000",
+        url: process.env.NODE_ENV === "production"
+      ? "https://debo-backend-cqz4.onrender.com"
+      : "http://localhost:5000",
       },
     ],
 
