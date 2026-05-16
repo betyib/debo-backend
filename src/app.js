@@ -9,6 +9,8 @@ import userRoutes from "./routes/user.routes.js";
 import projectRoutes from "./routes/project.routes.js";
 import taskRoutes from "./routes/task.routes.js";
 import errorHandler from "./middleware/error.middleware.js";
+import swaggerUi from "swagger-ui-express";
+import specs from "./config/swagger.js";
 
 
 dotenv.config();
@@ -32,6 +34,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.get("/", (req, res) => {
   res.json({
